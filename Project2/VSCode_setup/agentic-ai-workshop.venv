@@ -1,0 +1,11 @@
+# Create a new directory for our workshop
+mkdir agentic-ai-workshop
+cd agentic-ai-workshop
+
+# Create a Python virtual environment
+python -m venv .venv
+
+# Activate the virtual environment
+source .venv/bin/activate
+
+# You should see (.venv) in your terminal prompt now
