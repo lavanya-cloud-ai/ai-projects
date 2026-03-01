@@ -1,0 +1,8 @@
+# Test Python and boto3
+python -c "import boto3; print('✅ boto3 installed successfully')"
+
+# Test Streamlit
+python -c "import streamlit; print('✅ Streamlit installed successfully')"
+
+# Test AWS credentials (should show your account info)
+aws sts get-caller-identity
