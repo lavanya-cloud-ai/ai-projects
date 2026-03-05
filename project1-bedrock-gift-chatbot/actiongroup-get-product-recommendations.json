@@ -1,0 +1,83 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Product Details API",
+    "version": "1.0.0",
+    "description": "This API retrieves product information. Filtering parameters are passed as query strings. If query strings are empty, it performs a full scan and retrieves the full product list."
+  },
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "Retrieve product details",
+        "description": "Retrieves a list of products based on the provided query string parameters. If no parameters are provided, it returns the full list of products.",
+        "operationId":"getProducts",
+        "parameters": [
+          {
+            "name": "product_name",
+            "in": "query",
+            "description": "Retrieve details for a specific product",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter products by category",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Filter products by gender",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "occasion",
+            "in": "query",
+            "description": "Filter products by occasion",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "product_name": {
+                        "type": "string"
+                      },
+                      "category": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string"
+                      },
+                      "occasion": {
+                        "type": "string"
+                      },
+                      "product_description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
