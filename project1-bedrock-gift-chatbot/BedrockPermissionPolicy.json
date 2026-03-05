@@ -1,0 +1,43 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AmazonBedrockAgentInferenceProfilesCrossRegionPolicyProd",
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:InvokeModel",
+                "bedrock:InvokeModelWithResponseStream",
+                "bedrock:GetInferenceProfile",
+                "bedrock:GetFoundationModel"
+            ],
+            "Resource": [
+                "arn:aws:bedrock:us-east-1:578575721667:inference-profile/global.anthropic.claude-sonnet-4-6",
+                "arn:aws:bedrock:*::foundation-model/anthropic.claude-sonnet-4-6"
+            ]
+        },
+        {
+            "Sid": "AllowLambdaInvoke",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:us-east-1:578575721667:function:productdetailsapi-getproductdetailsfunction"
+        },
+        {
+            "Sid": "AllowLambdaInvokeGetCart",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:us-east-1:578575721667:function:productdetailsapi-getcartfunction"
+        },
+        {
+            "Sid": "AllowLambdaInvokeAddToCart",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:us-east-1:578575721667:function:productdetailsapi-addtocartfunction"
+        },
+        {
+            "Sid": "AllowLambdaInvokePersonalize",
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "arn:aws:lambda:us-east-1:578575721667:function:productdetailsapi-getpersonalizerecommendationfunction"
+        }
+    ]
+}
