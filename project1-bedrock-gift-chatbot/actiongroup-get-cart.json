@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Get Cart API",
+    "description": "Retrieves the current shopping cart for a user",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/cart": {
+      "get": {
+        "summary": "Get user's shopping cart",
+        "description": "Returns all items currently in the user's cart along with total price",
+        "operationId": "getCart",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "The unique identifier of the user",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved cart",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string",
+                      "description": "The unique identifier of the user"
+                    },
+                    "items": {
+                      "type": "array",
+                      "description": "List of items in the cart",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "productId": {
+                            "type": "string",
+                            "description": "Unique identifier of the product"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the product"
+                          },
+                          "quantity": {
+                            "type": "integer",
+                            "description": "Number of units in cart"
+                          },
+                          "price": {
+                            "type": "number",
+                            "description": "Price per unit"
+                          }
+                        }
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "description": "Total number of items across all products"
+                    },
+                    "totalPrice": {
+                      "type": "number",
+                      "description": "Total price of all items in the cart"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cart not found for the given user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
