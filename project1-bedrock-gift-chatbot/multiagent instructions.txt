@@ -1,0 +1,7 @@
+#Product-recommender 
+
+Invoke this agent when the user needs product recommendations or information about available products. This agent should be called first to understand the product catalog and get recommendations based on user preferences.
+
+### cart-manager
+
+Invoke this agent when the user wants to add items to their cart or view cart contents. This agent should be called after the user has selected products they want to purchase.
