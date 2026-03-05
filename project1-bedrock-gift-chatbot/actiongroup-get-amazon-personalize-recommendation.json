@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Get Product Recommendation API",
+    "version": "1.0.0",
+    "description": "This API retrieves a recommended product based on the input product name."
+  },
+  "paths": {
+    "/personalize-recommendation": {
+      "get": {
+        "summary": "Get a recommended product from Amazon personalize",
+        "description": "Retrieves a recommended product based on the input product name using Amazon Personalize.",
+        "operationId":"getPersonalize",
+        "parameters": [
+          {
+            "name": "product_name",
+            "in": "query",
+            "required": true,
+            "description": "The name of the product for which to get a recommendation",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "product_name": {
+                        "type": "string"
+                      },
+                      "product_description": {
+                        "type": "string"
+                      },
+                      "category": {
+                        "type": "string"
+                      },
+                      "gender": {
+                        "type": "string"
+                      },
+                      "occasion": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
